@@ -1,38 +1,116 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Netflix Clone
 
-## Getting Started
+This project is a Netflix clone built using React and Next.js, aimed at providing a user-friendly interface for browsing and watching movies and TV shows. It mimics the popular streaming platform Netflix, allowing users to discover and enjoy a wide range of entertainment content.
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+- [Netflix Clone](#netflix-clone)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Demo](#demo)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Technologies Used](#technologies-used)
+  - [Environment Variables](#environment-variables)
+  - [Contributing](#contributing)
+  - [License](#license)
+
+## Features
+
+- User authentication: Sign up, log in, and log out functionality.
+- Browse and search: Explore a vast collection of movies and TV shows, with the ability to search for specific titles.
+- Categories: Browse content by different genres, such as action, comedy, drama, etc.
+- Watchlist: Add movies and TV shows to your watchlist for easy access later.
+- Player: Enjoy a seamless video playback experience with integrated controls.
+- Responsive design: The application is optimized for various screen sizes, including mobile and tablet devices.
+
+## Demo
+
+You can access a live demo of the Netflix clone project at [Demo Link](https://your-demo-link.com).
+
+## Installation
+
+To run this project locally, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/matheusrfferreira/netflix-next-web.git`
+2. Navigate to the project directory: `cd netflix-next-web`
+3. Install the dependencies: `npm install`
+
+## Usage
+
+After completing the installation steps, you can use the following scripts provided in the `package.json` file:
+
+```json
+"scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint"
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `npm run dev`: Starts the development server.
+- `npm run build`: Builds the production-ready optimized version of the application.
+- `npm run start`: Starts the production server to run the built application.
+- `npm run lint`: Runs the ESLint linter to check for code quality and consistency.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Technologies Used
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+The main technologies and libraries used in this project are:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- React.js: A JavaScript library for building user interfaces.
+- Next.js: A React framework for building server-side rendered and static websites.
+- Tailwind CSS: A utility-first CSS framework for quickly styling the user interface.
+- Axios: A library for making HTTP requests from the browser or Node.js.
+- Prisma: A database toolkit for working with databases, including database query and migration capabilities.
+- ESLint: A popular JavaScript linter for maintaining code quality and consistency.
+- Bcrypt: A library for hashing and salting passwords for secure user authentication.
+- Next-Auth: An authentication library for Next.js applications.
+- Lodash: A utility library for simplifying JavaScript operations and data manipulation.
+- React Icons: A library providing popular icon packs as React components.
+- SWR: A data fetching library for efficient and reusable data fetching in React applications.
+- TypeScript: A typed superset of JavaScript that compiles to plain JavaScript.
+- Zustand: A small, fast, and scalable state management library for React.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Environment Variables
 
-## Learn More
+The project uses environment variables to store sensitive or configurable information. To use environment variables, create a `.env` file in the root of the project and define the following variables:
 
-To learn more about Next.js, take a look at the following resources:
+```
+DATABASE_URL=your_database_url
+NEXTAUTH_JWT_SECRET=your_nextauth_jwt_secret
+NEXTAUTH_SECRET=your_nextauth_secret
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+GITHUB_ID=your_github_id
+GITHUB_SECRET=your_github_secret
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+```
 
-## Deploy on Vercel
+Make sure to replace `your_database_url`, `your_nextauth_jwt_secret`, `your_nextauth_secret`, `your_github_id`, `your_github_secret`, `your_google_client_id`, and `your_google_client_secret` with your actual values.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To use environment variables in the code, you can access them using `process.env.VARIABLE_NAME`. For example:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```javascript
+const databaseUrl = process.env.DATABASE_URL;
+const nextAuthJwtSecret = process.env.NEXTAUTH_JWT_SECRET;
+const nextAuthSecret = process.env.NEXTAUTH_SECRET;
+const githubId = process.env.GITHUB_ID;
+const githubSecret = process.env.GITHUB_SECRET;
+const googleClientId = process.env.GOOGLE_CLIENT_ID;
+const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET;
+```
+
+Ensure that you have the necessary credentials and secrets from the corresponding platforms (such as GitHub and Google) to fill in the values for the environment variables.
+
+Remember not to share your `.env` file or expose sensitive information in your code repository.
+
+## Contributing
+
+Contributions to this project are welcome. If you have any suggestions or find any issues, feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
