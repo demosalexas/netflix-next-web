@@ -26,7 +26,7 @@ This project is a Netflix clone built using React and Next.js, aimed at providin
 
 ## Demo
 
-You can access a live demo of the Netflix clone project at [Demo Link](https://your-demo-link.com).
+You can access a live demo of the Netflix clone project at [Demo Link](https://netflix-next-web-9ozm.vercel.app/).
 
 ## Installation
 
