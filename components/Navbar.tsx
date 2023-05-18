@@ -1,69 +1,69 @@
-import { useCallback, useEffect, useState } from 'react';
-import { BsChevronDown, BsSearch, BsBell } from 'react-icons/bs';
+import { useCallback, useEffect, useState } from 'react'
+import { BsChevronDown, BsSearch, BsBell } from 'react-icons/bs'
 
-import AccountMenu from './AccountMenu';
-import MobileMenu from './MobileMenu';
-import NavbarItem from "./NavbarItem";
+import AccountMenu from './AccountMenu'
+import MobileMenu from './MobileMenu'
+import NavbarItem from './NavbarItem'
 
-const TOP_OFFSET = 66;
+const TOP_OFFSET = 66
 
 const Navbar = () => {
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const [showAccountMenu, setShowAccountMenu] = useState(false);
-  const [showBackground, setShowBackground] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false)
+  const [showAccountMenu, setShowAccountMenu] = useState(false)
+  const [showBackground, setShowBackground] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      if(window.scrollY >= TOP_OFFSET) {
-        setShowBackground(true);
+      if (window.scrollY >= TOP_OFFSET) {
+        setShowBackground(true)
       } else {
-        setShowBackground(false);
+        setShowBackground(false)
       }
     }
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll)
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScroll)
     }
   }, [])
 
   const toggleMobileMenu = useCallback(() => {
     setShowMobileMenu((currentValue) => !currentValue)
-  }, []);
+  }, [])
 
   const toggleAccountMenu = useCallback(() => {
     setShowAccountMenu((currentValue) => !currentValue)
-  }, []);
+  }, [])
 
   return (
-    <nav 
+    <nav
       className="
-        w-full 
         fixed 
-        z-40
+        z-40 
+        w-full
       "
     >
       <div
         className={`
-          px-4
-          md:px-16
-          py-6
           flex
           flex-row
           items-center
+          px-4
+          py-6
           transition
           duration-500
+          md:px-16
           ${showBackground ? 'bg-zinc-900 bg-opacity-90' : ''}
         `}
       >
         <img className="h-4 lg:h-7" src="/images/logo.png" alt="Netflix Logo" />
         <div
           className="
-            flex-row
             ml-8
-            gap-7
             hidden
+            flex-row
+            gap-7
             lg:flex
           "
         >
@@ -77,58 +77,58 @@ const Navbar = () => {
         <div
           onClick={toggleMobileMenu}
           className="
-            lg:hidden
+            relative
+            ml-8
             flex
+            cursor-pointer
             flex-row
             items-center
             gap-2
-            ml-8
-            cursor-pointer
-            relative
+            lg:hidden
           "
         >
-          <p 
+          <p
             className="
-              text-white
               text-sm
+              text-white
             "
           >
             Browse
           </p>
-          <BsChevronDown 
-              className={`
+          <BsChevronDown
+            className={`
                 text-white
                 transition
                 ${showMobileMenu ? 'rotate-180' : 'rotate-0'}
               `}
-            />
+          />
           <MobileMenu visible={showMobileMenu} />
         </div>
         <div
           className="
+            ml-auto
             flex
             flex-row
-            ml-auto
-            gap-7
             items-center
+            gap-7
           "
         >
           <div
             className="
-              text-gray-200
-              hover:text-gray-300
               cursor-pointer
+              text-gray-200
               transition
+              hover:text-gray-300
             "
           >
             <BsSearch />
           </div>
           <div
             className="
-              text-gray-200
-              hover:text-gray-300
               cursor-pointer
+              text-gray-200
               transition
+              hover:text-gray-300
             "
           >
             <BsBell />
@@ -137,27 +137,27 @@ const Navbar = () => {
           <div
             onClick={toggleAccountMenu}
             className="
+              relative
               flex
+              cursor-pointer
               flex-row
               items-center
               gap-2
-              cursor-pointer
-              relative
             "
           >
             <div
               className="
-                w-6
                 h-6
-                lg:w-10
-                lg:h-10
-                rounded-md
+                w-6
                 overflow-hidden
+                rounded-md
+                lg:h-10
+                lg:w-10
               "
             >
               <img src="/images/default-blue.png" alt="" />
             </div>
-            <BsChevronDown 
+            <BsChevronDown
               className={`
                 text-white
                 transition
@@ -168,9 +168,8 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
     </nav>
   )
 }
 
-export default Navbar;
+export default Navbar

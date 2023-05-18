@@ -1,85 +1,88 @@
-import React from 'react';
-import Image from "next/image";
-import { BsFillPlayFill } from "react-icons/bs";
+import React from 'react'
+import { useRouter } from 'next/router'
+import { BsFillPlayFill } from 'react-icons/bs'
+import { BiChevronDown } from 'react-icons/bi'
+import FavoriteButton from './FavoriteButton'
+import useInfoModal from '@/hooks/useInfoModal'
 interface MovieCardProps {
-  data: Record<string, any>;
-
+  data: Record<string, any>
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({
-  data
-}) => {
+const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
+  const router = useRouter()
+  const { openModal } = useInfoModal()
+
   return (
     <div
       className="
-        group
-        bg-zinc-900
         col-span
+        group
         relative
         h-[12vw]
+        bg-zinc-900
       "
     >
       <img
         className="
-          cursor-pointer
-          object-cover
-          transition
           duration
-          shadow-xl
+          h-[12vw]
+          w-full
+          cursor-pointer
           rounded-md
+          object-cover
+          shadow-xl
+          transition
+          delay-300
           group-hover:opacity-90
           sm:group-hover:opacity-0
-          delay-300
-          w-full
-          h-[12vw]
         "
         alt="Thumbnail"
         src={data.thumbnailUrl}
       />
       <div
         className="
-          opacity-0
+          invisible
           absolute
           top-0
-          transition
-          duration-200
           z-10
-          invisible
-          sm:visible
-          delay-300
           w-full
           scale-0
-          group-hover:scale-110
+          opacity-0
+          transition
+          delay-300
+          duration-200
           group-hover:-translate-y-[6vw]
           group-hover:translate-x-[2vw]
+          group-hover:scale-110
           group-hover:opacity-100
+          sm:visible
         "
       >
         <img
           src={data.thumbnailUrl}
           alt="Thumbnail"
           className="
-            cursor-pointer
-            object-cover
-            transition
             duration
-            shadow-xl
-            rounded-t-md
-            w-full
             h-[12vw]
+            w-full
+            cursor-pointer
+            rounded-t-md
+            object-cover
+            shadow-xl
+            transition
           "
         />
         <div
           className="
+            absolute
             z-10
+            w-full
+            rounded-b-md
             bg-zinc-800
             p-2
-            lg:p-4
-            absolute
-            w-full
-            transition
             shadow-md
-            rounded-b-md
+            transition
+            lg:p-4
           "
         >
           <div
@@ -92,35 +95,45 @@ const MovieCard: React.FC<MovieCardProps> = ({
           >
             <div
               className="
-                cursor-pointer
-                w-6
-                h-6
-                lg:w-10
-                lg:h-10
-                bg-white
-                rounded-full
                 flex
-                justify-center
+                h-6
+                w-6
+                cursor-pointer
                 items-center
+                justify-center
+                rounded-full
+                bg-white
                 transition
                 hover:bg-neutral-300
+                lg:h-10
+                lg:w-10
               "
-              onClick={() => {}}
+              onClick={() => router.push(`/watch/${data?.id}`)}
             >
-              <BsFillPlayFill
-                className=""
+              <BsFillPlayFill className="" size={30} />
+            </div>
+            <FavoriteButton movieId={data?.id} />
+            <div
+              onClick={() => openModal(data?.id)}
+              className="group/item ml-auto flex h-6 w-6 cursor-pointer 
+              items-center justify-center rounded-full border-2 border-white transition 
+              hover:border-neutral-300 lg:h-10 lg:w-10"
+            >
+              <BiChevronDown
                 size={30}
+                className="group-hover/item:text-nutral-300 text-white"
               />
             </div>
           </div>
           <p
             className="
-              text-green-400
-              font-semibold
               mt-4
+              font-semibold
+              text-green-400
             "
           >
-            New <span
+            New{' '}
+            <span
               className="
                 text-white
               "
@@ -130,17 +143,17 @@ const MovieCard: React.FC<MovieCardProps> = ({
           </p>
           <div
             className="
+              mt-4
               flex
               flex-row
-              mt-4
-              gap-2
               items-center
+              gap-2
             "
           >
             <p
               className="
-                text-white
                 text-[10px]
+                text-white
                 lg:text-sm
               "
             >
@@ -149,17 +162,17 @@ const MovieCard: React.FC<MovieCardProps> = ({
           </div>
           <div
             className="
+              mt-4
               flex
               flex-row
-              mt-4
-              gap-2
               items-center
+              gap-2
             "
           >
             <p
               className="
-                text-white
                 text-[10px]
+                text-white
                 lg:text-sm
               "
             >
@@ -172,4 +185,4 @@ const MovieCard: React.FC<MovieCardProps> = ({
   )
 }
 
-export default MovieCard;
+export default MovieCard

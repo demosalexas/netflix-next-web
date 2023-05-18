@@ -1,11 +1,17 @@
-import React from 'react';
-import { AiOutlineInfoCircle } from "react-icons/ai";
+import React, { useCallback } from 'react'
+import { AiOutlineInfoCircle } from 'react-icons/ai'
 
-import useBillboard from '@/hooks/useBillboard';
+import useBillboard from '@/hooks/useBillboard'
+import PlayButton from './PlayButton'
+import useInfoModal from '@/hooks/useInfoModal'
 
 const Billboard = () => {
+  const { data } = useBillboard()
+  const { openModal } = useInfoModal()
 
-  const { data, error, isLoading } = useBillboard();
+  const handleOpenModal = useCallback(() => {
+    openModal(data?.id)
+  }, [openModal, data?.id])
 
   return (
     <div
@@ -21,8 +27,8 @@ const Billboard = () => {
         muted
         loop
         className="
-          w-full
           h-[56.25vw]
+          w-full
           object-cover
           brightness-[60%]
         "
@@ -31,69 +37,71 @@ const Billboard = () => {
         className="
           absolute
           top-[30%]
-          md:top-[40%]
           ml-4
+          md:top-[40%]
           md:ml-16
         "
       >
         <p
           className="
-            text-white
             text-1xl
-            md:text-5xl
             h-full
             w-[50%]
-            lg:text-6xl
             font-bold
+            text-white
             drop-shadow-xl
+            md:text-5xl
+            lg:text-6xl
           "
         >
           {data?.tittle}
         </p>
         <p
           className="
-            text-white
-            text-[8px]
-            md:text-lg
             mt-3
-            md:mt-8
             w-[90%]
-            md:w-[80%]
-            lg:w-[50%]
+            text-[8px]
+            text-white
             drop-shadow-xl
+            md:mt-8
+            md:w-[80%]
+            md:text-lg
+            lg:w-[50%]
           "
         >
           {data?.description}
         </p>
         <div
           className="
+            mt-3
             flex
             flex-row
-            items-centermt-3
-            mt-3
-            md:mt-4
+            items-center
             gap-3
+            md:mt-4
           "
         >
+          <PlayButton movieId={data?.id} />
           <button
+            onClick={handleOpenModal}
             className="
-              bg-white
-              text-white
-              bg-opacity-30
-              rounded-md
-              py-1
-              md:py-2
-              px-2
-              md:px-4
-              w-auto
-              text-xs
-              lg:text-lg
-              font-semibold
               flex
+              w-auto
               flex-row
               items-center
-              hover:bg-opacity-20
+              rounded-md
+              bg-white
+              bg-opacity-30
+              py-1
+              px-2
+              text-xs
+              font-semibold
+              text-white
               transition
+              hover:bg-opacity-20
+              md:py-2
+              md:px-4
+              lg:text-lg
             "
           >
             <AiOutlineInfoCircle
@@ -109,4 +117,4 @@ const Billboard = () => {
   )
 }
 
-export default Billboard;
+export default Billboard

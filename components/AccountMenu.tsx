@@ -1,31 +1,31 @@
-import React from 'react';
-import { signOut } from "next-auth/react";
+import React from 'react'
+import { signOut } from 'next-auth/react'
+import useCurrentUser from '@/hooks/useCurrentUser'
 
 interface AccountMenuProps {
-  visible?: boolean;
+  visible?: boolean
 }
 
-const AccountMenu: React.FC<AccountMenuProps> = ({
-  visible,
-}) => {
+const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
+  const { data } = useCurrentUser()
 
-  if(!visible) {
-    return null;
+  if (!visible) {
+    return null
   }
 
   return (
     <div
       className="
-        bg-black
-        w-56
-        absolute 
-        top-14
+        border-ray-800
+        absolute
+        top-14 
         right-0
-        py-5
+        flex
+        w-56
         flex-col
         border-2
-        border-ray-800 
-        flex
+        bg-black 
+        py-5
       "
     >
       <div
@@ -37,47 +37,47 @@ const AccountMenu: React.FC<AccountMenuProps> = ({
       >
         <div
           className="
-            px-3
             group/item
             flex
-            flex-row
-            gap-3
-            items-center
             w-full
+            flex-row
+            items-center
+            gap-3
+            px-3
           "
         >
-          <img  
+          <img
             className="
               w-8
               rounded-md
             "
-            src="/images/default-blue.png" 
-            alt="" 
+            src="/images/default-blue.png"
+            alt=""
           />
           <p
             className="
-              text-white
               text-sm
+              text-white
               group-hover/item:underline
             "
           >
-            Username
+            {data?.name}
           </p>
         </div>
-        <hr 
+        <hr
           className="
-            bg-gray-600
-            border-0
-            h-px
             my-4
+            h-px
+            border-0
+            bg-gray-600
           "
         />
         <div
           className="
             px-3
             text-center
-            text-white
             text-sm
+            text-white
             hover:underline
           "
           onClick={() => signOut()}
@@ -87,6 +87,6 @@ const AccountMenu: React.FC<AccountMenuProps> = ({
       </div>
     </div>
   )
-};
+}
 
-export default AccountMenu;
+export default AccountMenu

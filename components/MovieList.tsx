@@ -1,32 +1,31 @@
-import React from 'react';
+import React from 'react'
 
-import { isEmpty} from "lodash";
-import MovieCard from "@/components/MovieCard";
+import MovieCard from '@/components/MovieCard'
 
 interface MovieListProps {
-  data: Record<string, any>[];
-  title: string;
+  data: Record<string, any>[]
+  title: string
 }
 
 const MovieList: React.FC<MovieListProps> = ({ data, title }) => {
   return (
     <div
       className="
-        px-4
-        md:px-12
         mt-4
         space-y-8
+        px-4
+        md:px-12
       "
     >
       <div>
         <p
           className="
-            text-white
             tect-md
+            mb-4
+            font-semibold
+            text-white
             md:text-xl
             lg:text-2xl
-            font-semibold
-            mb-4
           "
         >
           {title}
@@ -40,12 +39,11 @@ const MovieList: React.FC<MovieListProps> = ({ data, title }) => {
         >
           {data.map((movie) => (
             <MovieCard key={movie.id} data={movie} />
-            ))}
+          ))}
         </div>
       </div>
-
     </div>
   )
 }
 
-export default MovieList;
+export default MovieList

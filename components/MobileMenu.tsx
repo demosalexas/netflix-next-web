@@ -1,28 +1,26 @@
-import React from 'react';
+import React from 'react'
 
 interface MobileMenuProps {
-  visible?: boolean;
-};
+  visible?: boolean
+}
 
-const MobileMenu: React.FC<MobileMenuProps> = ({
-  visible,
-}) => {
-  if(!visible) {
-    return null;
+const MobileMenu: React.FC<MobileMenuProps> = ({ visible }) => {
+  if (!visible) {
+    return null
   }
   return (
-    <div 
+    <div
       className="
-        bg-black
-        w-56
         absolute
         top-8
         left-0
-        py-5
+        flex
+        w-56
         flex-col
         border-2
         border-gray-800
-        flex
+        bg-black
+        py-5
       "
     >
       <div
@@ -92,10 +90,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
         >
           Browse by Languages
         </div>
-
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default MobileMenu;
+export default MobileMenu
